@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Alien Isolation- Detalle</title>
+  <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+
+  <header>
+    <div class="header-container">
+      <h1>PlayVerse</h1>
+      <p> </p>
+
+      <!-- Barra de navegación común -->
+      <nav class="navbar">
+        <div class="logo">
+          <!--<a href="index.html">PlayVerse</a> -->
+        </div>
+        <ul class="nav-links">
+          <li><a href="../categorias/suspenso.html">← Categoría: Suspenso</a></li>
+          <li><a href="../index.html">Inicio</a></li>
+          <li><a href="../acceso/login.html">Iniciar Sesion</a></li>
+          <li><a href="../acceso/registro.html">Registrarse</a></li>
+        </ul>
+      </nav>
+
+    </div>
+  </header>
+
+  <main>
+    <div class="detalle-juego">
+      <div class="imagen-juego">
+        <img src="../img/alien.jpg" alt="Alien">
+        <p class="login-msg">Inicie sesión para añadir el artículo a su carrito</p>
+        <h2>Alien Isolation</h2>
+        <span class="precio">$59.990</span>        
+        <button id="btn-carrito" class="btn-animado">Añadir al Carrito</button>
+      </div>
+
+      <div class="descripcion-juego">
+        <h3>Descripción</h3>
+        <p>
+          Quince años después de la desaparición de su madre en la nave espacial Nostromo, 
+          Amanda Ripley viaja a una estación espacial remota que podría contener pistas 
+          sobre el destino de su madre. Pero el desastre la azota al llegar a su destino. 
+          Amanda descubre que la estación espacial Sebastopol es todo menos un refugio seguro.
+        </p>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 PlayVerse</p>
+  </footer>
+
+  <!-- Script para contar clics en el botón -->
+  <script>
+    let contadorCarrito = 0;
+    const botonCarrito = document.getElementById('btn-carrito');
+
+    botonCarrito.addEventListener('click', () => {
+      contadorCarrito++;
+      botonCarrito.textContent = `Añadir al Carrito (${contadorCarrito})`;
+      botonCarrito.classList.add('clickeado');
+
+      // Reinicia la animación si ya fue aplicada
+      setTimeout(() => {
+        botonCarrito.classList.remove('clickeado');
+      }, 300);
+    });
+  </script>
+
+</body>
+</html>

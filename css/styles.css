@@ -287,3 +287,144 @@ footer {
   font-size: 1rem;
   line-height: 1.6;
 }
+
+
+/* =======================
+   Menu
+   ======================= */
+.menu {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  margin-top: 1rem;
+}
+
+.btn-menu {
+  background-color: #1e1e2f;
+  color: #fff;
+  padding: 0.6rem 1.2rem;
+  border: none;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.btn-menu:hover {
+  background-color: #ff4757;
+  transform: scale(1.05);
+}
+
+
+
+/* ******************** */
+/* Animación de entrada */
+@keyframes fadeSlideDown {
+  0% {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Contenedor del menú */
+.menu {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  margin-top: 1rem;
+  animation: fadeSlideDown 0.8s ease-out forwards;
+}
+
+/* Botones del menú */
+.btn-menu {
+  background-color: #1e1e2f;
+  color: #fff;
+  padding: 0.6rem 1.2rem;
+  border: none;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: bold;
+  opacity: 0; /* Ocultos al inicio */
+  transform: translateY(-20px);
+  animation: fadeSlideDown 0.8s ease-out forwards;
+  animation-delay: 0.3s;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+/* Hover */
+.btn-menu:hover {
+  background-color: #ff4757;
+  transform: scale(1.05);
+}
+
+
+
+
+
+
+/* Ejemplo de animación opcional */
+.btn-animado.clickeado {
+  animation: pulse 0.3s ease;
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+
+/* para ajustar tamaños de texto, espaciado o disposición en pantallas pequeñas    */
+@media (max-width: 768px) {
+  .juego {
+    width: 100%;
+    margin-bottom: 2rem;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+/* Estilos para la barra de navegación */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #0294686b;
+  padding: 1rem 2rem;
+  color: #fff;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.navbar .logo a {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #fff;
+  text-decoration: none;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 1.5rem;
+}
+
+.nav-links a {
+  color: #fff;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+  color: #abe44f;
+}

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Resident Evil - Detalle</title>
+  <link rel="stylesheet" href="../css/styles.css">
+</head>
+
+<body>
+
+  <header>
+    <div class="header-container">
+      <h1>PlayVerse</h1>
+      <p> </p>
+
+
+      <!-- Barra de navegación común -->
+      <nav class="navbar">
+        <div class="logo">
+          <!--<a href="index.html">PlayVerse</a> -->
+        </div>
+        <ul class="nav-links">
+          <li><a href="../categorias/terror.html">← Categoría: Terror</a></li>
+          <li><a href="../index.html">Inicio</a></li>
+          <li><a href="../acceso/login.html">Iniciar Sesion</a></li>
+          <li><a href="../acceso/registro.html">Registrarse</a></li>
+        </ul>
+      </nav>
+
+
+    </div>
+  </header>
+
+  <main>
+    <div class="detalle-juego">
+      <div class="imagen-juego">
+        <img src="../img/resident_evil.jpg" alt="Resident Evil">
+        <p class="login-msg">Inicie sesión para añadir el artículo a su carrito</p>
+        <h2>Resident Evil</h2>
+        <span class="precio">$49.990</span>
+        <button id="btn-carrito" class="btn-animado">Añadir al Carrito</button>
+      </div>
+
+      <div class="descripcion-juego">
+        <h3>Descripción</h3>
+        <p>
+          Sobrevive a los horrores de Raccoon City en <strong>Resident Evil</strong>,
+          un juego de terror de supervivencia lleno de suspenso, acertijos y criaturas aterradoras.
+          Explora escenarios oscuros, enfréntate a enemigos mutantes y descubre los secretos detrás del brote viral.
+        </p>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 PlayVerse</p>
+  </footer>
+
+  <!-- Script para contar clics en el botón -->
+  <script>
+    let contadorCarrito = 0;
+    const botonCarrito = document.getElementById('btn-carrito');
+
+    botonCarrito.addEventListener('click', () => {
+      contadorCarrito++;
+      botonCarrito.textContent = `Añadir al Carrito (${contadorCarrito})`;
+      botonCarrito.classList.add('clickeado');
+
+      // Reinicia la animación si ya fue aplicada
+      setTimeout(() => {
+        botonCarrito.classList.remove('clickeado');
+      }, 300);
+    });
+  </script>
+</body>
+
+</html>
