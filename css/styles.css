@@ -1,430 +1,421 @@
-/* =======================
-   Estilos base del sitio
-   ======================= */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-body {
-  font-family: 'Roboto', sans-serif;
-  background-color: #0f0f0f; /* Fondo oscuro tipo tech */
-  color: #e0e0e0;
-  line-height: 1.6;
-  transition: background-color 0.3s ease;
-}
-
-/* =======================
-   Encabezado principal
-   ======================= */
-header {
-  background: linear-gradient(to right, #1a1a1a, #2c2c2c);
-  padding: 2rem;
-  text-align: center;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.5);
-  animation: fadeInDown 1s ease;
-}
-
-header h1 {
-  font-size: 2.5rem;
-  color: #00ffe7; /* Color neón suave */
-}
-
-header p {
-  font-size: 1.1rem;
-  color: #b0b0b0;
-  margin-top: 0.5rem;
-}
-
-/* =======================
-   Navegación
-   ======================= */
-nav {
-  margin-top: 1rem;
-}
-
-nav a {
-  margin: 0 1rem;
-  color: #00ffe7;
-  text-decoration: none;
-  font-weight: bold;
-  transition: color 0.3s ease;
-}
-
-nav a:hover {
-  color: #ffffff;
-}
-
-/* =======================
-   Sección de categorías
-   ======================= */
-.categorias {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 2rem;
-  padding: 3rem;
-  animation: fadeInUp 1s ease;
-}
-
-.categoria {
-  background-color: #1c1c1c;
-  border-radius: 10px;
-  overflow: hidden;
-  width: 220px;
-  text-align: center;
-  box-shadow: 0 0 10px rgba(0,255,231,0.2);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.categoria:hover {
-  transform: scale(1.05);
-  box-shadow: 0 0 20px rgba(0,255,231,0.4);
-}
-
-.categoria img {
-  width: 100%;
-  height: 140px;
-  object-fit: cover;
-}
-
-.categoria h2 {
-  padding: 1rem;
-  color: #ffffff;
-}
-
-/* =======================
-   Fichas de juegos
-   ======================= */
-.juego {
-  background-color: #1c1c1c;
-  border-radius: 10px;
-  margin: 2rem auto;
-  padding: 1rem;
-  max-width: 300px;
-  text-align: center;
-  box-shadow: 0 0 10px rgba(255,255,255,0.1);
-  animation: fadeInUp 1s ease;
-}
-
-.juego img {
-  width: 100%;
-  height: 160px;
-  object-fit: cover;
-  border-radius: 8px;
-}
-
-.juego h3 {
-  margin-top: 1rem;
-  color: #00ffe7;
-}
-
-.juego p {
-  font-size: 0.95rem;
-  color: #cccccc;
-  margin: 0.5rem 0;
-}
-
-.juego span {
-  display: block;
-  font-weight: bold;
-  color: #ffd700;
-  margin-top: 0.5rem;
-}
-
-/* =======================
-   Formularios (registro/login)
-   ======================= */
-.formulario {
-  max-width: 400px;
-  margin: 3rem auto;
-  padding: 2rem;
-  background-color: #1c1c1c;
-  border-radius: 10px;
-  box-shadow: 0 0 15px rgba(0,255,231,0.2);
-  animation: fadeInUp 1s ease;
-}
-
-form {
-  display: flex;
-  flex-direction: column;
-}
-
-label {
-  margin-top: 1rem;
-  color: #ffffff;
-}
-
-input {
-  padding: 0.6rem;
-  border: none;
-  border-radius: 5px;
-  background-color: #2c2c2c;
-  color: #e0e0e0;
-}
-
-button {
-  margin-top: 1.5rem;
-  padding: 0.75rem;
-  background-color: #00ffe7;
-  color: #121212;
-  border: none;
-  border-radius: 5px;
-  font-weight: bold;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-button:hover {
-  background-color: #00cbbf;
-}
-
-/* =======================
-   Pie de página
-   ======================= */
-footer {
-  background-color: #1a1a1a;
-  color: #888;
-  text-align: center;
-  padding: 1rem;
-  margin-top: 3rem;
-}
-
-/* =======================
-   Animaciones
-   ======================= */
-@keyframes fadeInDown {
-  from {
-    opacity: 0;
-    transform: translateY(-30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-
-/* =======================
-   Contenedor horizontal de juegos
-   ======================= */
-.juegos-container {
-  display: flex;
-  justify-content: center;
-  gap: 2rem;
-  flex-wrap: wrap; /* Permite que se acomoden si el espacio es limitado */
-  padding: 2rem;
-}
-
-
-
-/* =======================
-   Vista detallada de juego
-   ======================= */
-.detalle-juego {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 3rem;
-  padding: 3rem;
-  animation: fadeInUp 1s ease;
-}
-
-.imagen-juego {
-  max-width: 320px;
-  text-align: center;
-}
-
-.imagen-juego img {
-  width: 100%;
-  height: auto;
-  border-radius: 10px;
-  box-shadow: 0 0 10px rgba(255,255,255,0.1);
-}
-
-.imagen-juego h2 {
-  margin-top: 1rem;
-  color: #00ffe7;
-}
-
-.precio {
-  display: block;
-  font-size: 1.2rem;
-  font-weight: bold;
-  color: #ffd700;
-  margin: 0.5rem 0;
-}
-
-.login-msg {
-  font-size: 0.9rem;
-  color: #cccccc;
-  margin-top: 0.5rem;
-}
-
-.descripcion-juego {
-  max-width: 400px;
-  color: #e0e0e0;
-}
-
-.descripcion-juego h3 {
-  color: #ffffff;
-  margin-bottom: 1rem;
-}
-
-.descripcion-juego p {
-  font-size: 1rem;
-  line-height: 1.6;
-}
-
-
-/* =======================
-   Menu
-   ======================= */
-.menu {
-  display: flex;
-  gap: 1rem;
-  justify-content: center;
-  margin-top: 1rem;
-}
-
-.btn-menu {
-  background-color: #1e1e2f;
-  color: #fff;
-  padding: 0.6rem 1.2rem;
-  border: none;
-  border-radius: 8px;
-  text-decoration: none;
-  font-weight: bold;
-  transition: background-color 0.3s ease, transform 0.2s ease;
-}
-
-.btn-menu:hover {
-  background-color: #ff4757;
-  transform: scale(1.05);
-}
-
-
-
-/* ******************** */
-/* Animación de entrada */
-@keyframes fadeSlideDown {
-  0% {
-    opacity: 0;
-    transform: translateY(-30px);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-/* Contenedor del menú */
-.menu {
-  display: flex;
-  gap: 1rem;
-  justify-content: center;
-  margin-top: 1rem;
-  animation: fadeSlideDown 0.8s ease-out forwards;
-}
-
-/* Botones del menú */
-.btn-menu {
-  background-color: #1e1e2f;
-  color: #fff;
-  padding: 0.6rem 1.2rem;
-  border: none;
-  border-radius: 8px;
-  text-decoration: none;
-  font-weight: bold;
-  opacity: 0; /* Ocultos al inicio */
-  transform: translateY(-20px);
-  animation: fadeSlideDown 0.8s ease-out forwards;
-  animation-delay: 0.3s;
-  transition: background-color 0.3s ease, transform 0.2s ease;
-}
-
-/* Hover */
-.btn-menu:hover {
-  background-color: #ff4757;
-  transform: scale(1.05);
-}
-
-
-
-
-
-
-/* Ejemplo de animación opcional */
-.btn-animado.clickeado {
-  animation: pulse 0.3s ease;
-}
-
-@keyframes pulse {
-  0% { transform: scale(1); }
-  50% { transform: scale(1.05); }
-  100% { transform: scale(1); }
-}
-
-
-/* para ajustar tamaños de texto, espaciado o disposición en pantallas pequeñas    */
-@media (max-width: 768px) {
-  .juego {
-    width: 100%;
-    margin-bottom: 2rem;
-  }
-}
-
-
-
-
-
-
-
-
-
-
-/* Estilos para la barra de navegación */
-.navbar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background-color: #0294686b;
-  padding: 1rem 2rem;
-  color: #fff;
-  font-family: 'Segoe UI', sans-serif;
-}
-
-.navbar .logo a {
-  font-size: 1.5rem;
-  font-weight: bold;
-  color: #fff;
-  text-decoration: none;
-}
-
-.nav-links {
-  list-style: none;
-  display: flex;
-  gap: 1.5rem;
-}
-
-.nav-links a {
-  color: #fff;
-  text-decoration: none;
-  transition: color 0.3s ease;
-}
-
-.nav-links a:hover {
-  color: #abe44f;
-}
+        /* =======================
+           Variables de colores 
+           ======================= */
+        :root {
+            --primary: #3498db;      /* Azul principal */
+            --secondary: #2ecc71;    /* Verde éxito */
+            --tertiary: #9b59b6;     /* Púrpura */
+            --dark: #2c3e50;         /* Azul oscuro */
+            --light: #ecf0f1;        /* Gris claro */
+            --danger: #e74c3c;       /* Rojo */
+            --warning: #f39c12;      /* Naranja */
+            --white: #ffffff;        /* Blanco */
+            --gray-light: #f5f7fa;   /* Gris muy claro */
+        }
+
+        /* =======================
+           Estilos base del sitio
+           ======================= */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: var(--gray-light); /* Fondo gris claro */
+            color: var(--dark); /* Texto azul oscuro */
+            line-height: 1.6;
+            transition: background-color 0.3s ease;
+        }
+
+        /* =======================
+           Encabezado principal
+           ======================= */
+        header {
+            background: linear-gradient(to right, var(--primary), var(--secondary)); /* Degradado azul-verde */
+            padding: 2rem;
+            text-align: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            animation: fadeInDown 1s ease;
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            color: var(--white); /* Blanco */
+        }
+
+        header p {
+            font-size: 1.1rem;
+            color: rgba(255, 255, 255, 0.8); /* Blanco semitransparente */
+            margin-top: 0.5rem;
+        }
+
+        /* =======================
+           Navegación
+           ======================= */
+        nav {
+            margin-top: 1rem;
+        }
+
+        nav a {
+            margin: 0 1rem;
+            color: var(--white); /* Blanco */
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s ease;
+        }
+
+        nav a:hover {
+            color: var(--light); /* Gris claro */
+        }
+
+        /* =======================
+           Sección de categorías
+           ======================= */
+        .categorias {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 2rem;
+            padding: 3rem;
+            animation: fadeInUp 1s ease;
+        }
+
+        .categoria {
+            background-color: var(--white); /* Blanco */
+            border-radius: 10px;
+            overflow: hidden;
+            width: 220px;
+            text-align: center;
+            box-shadow: 0 0 10px rgba(52, 152, 219, 0.2); /* Sombra azul suave */
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 1px solid var(--light); /* Borde gris claro */
+        }
+
+        .categoria:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 20px rgba(52, 152, 219, 0.4); /* Sombra azul más intensa */
+        }
+
+        .categoria img {
+            width: 100%;
+            height: 140px;
+            object-fit: cover;
+        }
+
+        .categoria h2 {
+            padding: 1rem;
+            color: var(--dark); /* Azul oscuro */
+        }
+
+        /* =======================
+           Fichas de juegos
+           ======================= */
+        .juego {
+            background-color: var(--white); /* Blanco */
+            border-radius: 10px;
+            margin: 2rem auto;
+            padding: 1rem;
+            max-width: 300px;
+            text-align: center;
+            box-shadow: 0 0 10px rgba(0,0,0,0.05); /* Sombra suave */
+            animation: fadeInUp 1s ease;
+            border: 1px solid var(--light); /* Borde gris claro */
+        }
+
+        .juego img {
+            width: 100%;
+            height: 160px;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+
+        .juego h3 {
+            margin-top: 1rem;
+            color: var(--primary); /* Azul principal */
+        }
+
+        .juego p {
+            font-size: 0.95rem;
+            color: var(--dark); /* Azul oscuro */
+            margin: 0.5rem 0;
+        }
+
+        .juego span {
+            display: block;
+            font-weight: bold;
+            color: var(--warning); /* Naranja */
+            margin-top: 0.5rem;
+        }
+
+        /* =======================
+           Formularios (registro/login)
+           ======================= */
+        .formulario {
+            max-width: 400px;
+            margin: 3rem auto;
+            padding: 2rem;
+            background-color: var(--white); /* Blanco */
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(52, 152, 219, 0.1); /* Sombra azul suave */
+            animation: fadeInUp 1s ease;
+            border: 1px solid var(--light); /* Borde gris claro */
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        label {
+            margin-top: 1rem;
+            color: var(--dark); /* Azul oscuro */
+        }
+
+        input {
+            padding: 0.6rem;
+            border: 1px solid var(--light); /* Borde gris claro */
+            border-radius: 5px;
+            background-color: var(--white); /* Blanco */
+            color: var(--dark); /* Azul oscuro */
+        }
+
+        input:focus {
+            border-color: var(--primary); /* Azul principal */
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2); /* Sombra azul suave */
+        }
+
+        button {
+            margin-top: 1.5rem;
+            padding: 0.75rem;
+            background-color: var(--primary); /* Azul principal */
+            color: var(--white); /* Blanco */
+            border: none;
+            border-radius: 5px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+        button:hover {
+            background-color: #2980b9; /* Azul más oscuro */
+            transform: translateY(-2px);
+        }
+
+        /* =======================
+           Pie de página
+           ======================= */
+        footer {
+            background-color: var(--dark); /* Azul oscuro */
+            color: var(--light); /* Gris claro */
+            text-align: center;
+            padding: 1rem;
+            margin-top: 3rem;
+        }
+
+        /* =======================
+           Animaciones
+           ======================= */
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* =======================
+           Contenedor horizontal de juegos
+           ======================= */
+        .juegos-container {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+            padding: 2rem;
+        }
+
+        /* =======================
+           Vista detallada de juego
+           ======================= */
+        .detalle-juego {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 3rem;
+            padding: 3rem;
+            animation: fadeInUp 1s ease;
+        }
+
+        .imagen-juego {
+            max-width: 320px;
+            text-align: center;
+        }
+
+        .imagen-juego img {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.05); /* Sombra suave */
+        }
+
+        .imagen-juego h2 {
+            margin-top: 1rem;
+            color: var(--primary); /* Azul principal */
+        }
+
+        .precio {
+            display: block;
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: var(--warning); /* Naranja */
+            margin: 0.5rem 0;
+        }
+
+        .login-msg {
+            font-size: 0.9rem;
+            color: var(--dark); /* Azul oscuro */
+            margin-top: 0.5rem;
+        }
+
+        .descripcion-juego {
+            max-width: 400px;
+            color: var(--dark); /* Azul oscuro */
+        }
+
+        .descripcion-juego h3 {
+            color: var(--dark); /* Azul oscuro */
+            margin-bottom: 1rem;
+        }
+
+        .descripcion-juego p {
+            font-size: 1rem;
+            line-height: 1.6;
+        }
+
+        /* =======================
+           Menu
+           ======================= */
+        .menu {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            margin-top: 1rem;
+        }
+
+        .btn-menu {
+            background-color: var(--primary); /* Azul principal */
+            color: var(--white); /* Blanco */
+            padding: 0.6rem 1.2rem;
+            border: none;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+        .btn-menu:hover {
+            background-color: var(--secondary); /* Verde */
+            transform: scale(1.05);
+        }
+
+        /* ******************** */
+        /* Animación de entrada */
+        @keyframes fadeSlideDown {
+            0% {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Contenedor del menú */
+        .menu {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            margin-top: 1rem;
+            animation: fadeSlideDown 0.8s ease-out forwards;
+        }
+
+        /* Botones del menú */
+        .btn-menu {
+            opacity: 0;
+            transform: translateY(-20px);
+            animation: fadeSlideDown 0.8s ease-out forwards;
+            animation-delay: 0.3s;
+        }
+
+        /* Ejemplo de animación opcional */
+        .btn-animado.clickeado {
+            animation: pulse 0.3s ease;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        /* para ajustar tamaños de texto, espaciado o disposición en pantallas pequeñas */
+        @media (max-width: 768px) {
+            .juego {
+                width: 100%;
+                margin-bottom: 2rem;
+            }
+        }
+
+        /* Estilos para la barra de navegación */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: var(--primary); /* Azul principal */
+            padding: 1rem 2rem;
+            color: var(--white); /* Blanco */
+            font-family: 'Segoe UI', sans-serif;
+        }
+
+        .navbar .logo a {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--white); /* Blanco */
+            text-decoration: none;
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        .nav-links a {
+            color: var(--white); /* Blanco */
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--light); /* Gris claro */
+        }
+

@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Ofertas de Juegos - PlayVerse</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../css/styles.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    .ofertas-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      justify-content: center;
+      padding: 2rem;
+    }
+
+    .card.oferta {
+      width: 300px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .card.oferta:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 15px #00ffe7;
+    }
+
+    .precio-original {
+      text-decoration: line-through;
+      color: #ff6b6b;
+    }
+
+    .precio-descuento {
+      color: #00ffe7;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="header-container">
+      <h1>PlayVerse</h1>
+      <p>Ofertas de la Semana</p>
+      <p> </p>
+
+      <!-- Barra de navegación común -->
+      <nav class="navbar">
+
+        <ul class="nav-links">
+          <li><a href="../index.html">Inicio</a></li>
+
+          <li><a href="../informacion/actividades.html">Actividades</a></li>
+          <li><a href="../gestion/reservas.html">Reservas</a></li>
+          <li><a href="../gestion/ofertas.html">Ofertas</a></li>
+
+          <li><a href="../acceso/login.html">Iniciar Sesion</a></li>
+          <li><a href="../acceso/registro.html">Registrarse</a></li>
+        </ul>
+      </nav>
+
+    </div>
+  </header>
+
+  <main>
+    <section class="ofertas-container">
+
+      <!-- Oferta 1 -->
+      <div class="card oferta">
+        <img src="../img/EldenRingDLC.jpg" class="card-img-top" alt="Elden Ring">
+        <div class="card-body">
+          <h5 class="card-title">Elden Ring</h5>
+          <p class="card-text">
+            <span class="precio-original">$59.990</span> 
+            <span class="precio-descuento">$39.990</span>
+          </p>
+          <p class="card-text">Explora las Tierras Intermedias con un 30% de descuento.</p>
+          <a href="reservas.html?actividad=Lanzamiento Elden Ring" class="btn btn-primary">Reservar</a>
+        </div>
+      </div>
+
+      <!-- Oferta 2 -->
+      <div class="card oferta">
+        <img src="../img/mariokart.jpg" class="card-img-top" alt="Mario Kart">
+        <div class="card-body">
+          <h5 class="card-title">Mario Kart 8 Deluxe</h5>
+          <p class="card-text">
+            <span class="precio-original">$49.990</span> 
+            <span class="precio-descuento">$29.990</span>
+          </p>
+          <p class="card-text">Corre con tus amigos en el torneo semanal con 40% de descuento.</p>
+          <a href="reservas.html?actividad=Torneo Mario Kart" class="btn btn-primary">Reservar</a>
+        </div>
+      </div>
+
+      <!-- Oferta 3 -->
+      <div class="card oferta">
+        <img src="../img/comunidad.jpg" class="card-img-top" alt="Sesión Comunidad">
+        <div class="card-body">
+          <h5 class="card-title">Sesión de Comunidad</h5>
+          <p class="card-text">
+            <span class="precio-original">$19.990</span> 
+            <span class="precio-descuento">$9.990</span>
+          </p>
+          <p class="card-text">Conéctate con otros jugadores y participa en dinámicas exclusivas.</p>
+          <a href="reservas.html?actividad=Sesión de comunidad" class="btn btn-primary">Reservar</a>
+        </div>
+      </div>
+
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 PlayVerse</p>
+  </footer>
+
+</body>
+</html>

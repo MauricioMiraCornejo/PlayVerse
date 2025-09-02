@@ -1,0 +1,133 @@
+<!-- Archivo: gestion/reservas.html -->
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Reservas - PlayVerse</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/styles.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .mensaje-validacion {
+            font-size: 0.9rem;
+            margin-top: 0.3rem;
+            color: #ff6b6b;
+        }
+
+        .mensaje-validacion.ok {
+            color: #00ffe7;
+        }
+    </style>
+</head>
+
+<body>
+
+  <header>
+    <div class="header-container">
+      <h1>PlayVerse</h1>
+      <p>Gestión de reservas</p>
+      <p> </p>
+
+      <!-- Barra de navegación común -->
+      <nav class="navbar">
+
+        <ul class="nav-links">
+          <li><a href="../index.html">Inicio</a></li>
+
+          <li><a href="../informacion/actividades.html">Actividades</a></li>
+          <li><a href="../gestion/reservas.html">Reservas</a></li>
+          <li><a href="../gestion/ofertas.html">Ofertas</a></li>
+
+          <li><a href="../acceso/login.html">Iniciar Sesion</a></li>
+          <li><a href="../acceso/registro.html">Registrarse</a></li>
+        </ul>
+      </nav>
+
+    </div>
+  </header>
+    
+    <main>
+        <form id="reservaForm" class="formulario">
+            <label for="actividad">Actividad:</label>
+            <select id="actividad" required>
+                <option value="">Seleccione una actividad</option>
+                <option>Torneo Mario Kart</option>
+                <option>Sesión de comunidad</option>
+                <option>Lanzamiento Elden Ring</option>
+            </select>
+
+            <label for="fecha">Fecha:</label>
+            <input type="date" id="fecha" required>
+
+            <label for="nombre">Nombre completo:</label>
+            <input type="text" id="nombre" required>
+
+            <label for="email">Correo electrónico:</label>
+            <input type="email" id="email" required>
+            <div id="emailMsg" class="mensaje-validacion"></div>
+
+            <button type="submit" class="btn-animado">Reservar</button>
+            <button type="reset" class="btn-animado">Limpiar</button>
+        </form>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 PlayVerse</p>
+    </footer>
+
+    <!-- Script de validación -->
+    <script>
+        const emailInput = document.getElementById('email');
+        const emailMsg = document.getElementById('emailMsg');
+        const emailRegex = /^[^@]+@[^@]+\.[a-zA-Z]{2,}$/;
+
+        emailInput.addEventListener('input', () => {
+            if (emailRegex.test(emailInput.value)) {
+                emailMsg.textContent = "Correo válido ✔";
+                emailMsg.classList.add("ok");
+            } else {
+                emailMsg.textContent = "Correo inválido";
+                emailMsg.classList.remove("ok");
+            }
+        });
+
+        document.getElementById('reservaForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            const actividad = document.getElementById('actividad').value;
+            const fecha = document.getElementById('fecha').value;
+            const nombre = document.getElementById('nombre').value.trim();
+            const email = emailInput.value.trim();
+
+            if (!actividad || !fecha || !nombre || !email) {
+                alert('Por favor, complete todos los campos.');
+                return;
+            }
+
+            if (!emailRegex.test(email)) {
+                alert('Ingrese un correo electrónico válido.');
+                return;
+            }
+
+            alert('¡Reserva realizada con éxito!');
+            this.reset();
+            emailMsg.textContent = "";
+        });
+    </script>
+
+    <script>
+        window.addEventListener('DOMContentLoaded', () => {
+            const params = new URLSearchParams(window.location.search);
+            const actividad = params.get('actividad');
+            if (actividad) {
+                document.getElementById('actividad').value = actividad;
+            }
+        });
+    </script>
+
+
+
+</body>
+
+</html>

@@ -17,6 +17,10 @@
         .mensaje-validacion.ok {
             color: #00ffe7;
         }
+
+        .oculto {
+            display: none;
+        }
     </style>
 </head>
 
@@ -37,7 +41,6 @@
                     <li><a href="../acceso/registro.html">Registrarse</a></li>
                 </ul>
             </nav>
-
         </div>
     </header>
 
@@ -61,6 +64,8 @@
                 </div>
             </form>
 
+            <!-- Mensaje de éxito opcional -->
+            <div id="mensajeExito" class="mensaje-validacion oculto ok">Inicio de sesión exitoso ✔</div>
         </div>
     </main>
 
@@ -75,6 +80,7 @@
 
         const emailMsg = document.getElementById('emailMsg');
         const passMsg = document.getElementById('passMsg');
+        const mensajeExito = document.getElementById('mensajeExito');
 
         const emailRegex = /^[^@]+@[^@]+\.[a-zA-Z]{2,}$/;
         const passwordRegex = /^(?=.*[A-Z])(?=.*\d).{6,18}$/;
@@ -105,7 +111,6 @@
             const email = emailInput.value.trim();
             const password = passwordInput.value;
 
-            const mensajeExito = document.getElementById('mensajeExito');
             mensajeExito.classList.add('oculto');
 
             if (!email || !password) {
@@ -123,10 +128,20 @@
                 return;
             }
 
-            mensajeExito.classList.remove('oculto');
-            this.reset();
-            emailMsg.textContent = "";
-            passMsg.textContent = "";
+            // Obtener credenciales guardadas desde localStorage
+            const emailGuardado = localStorage.getItem('email');
+            const passwordGuardada = localStorage.getItem('password');
+
+            if (email === emailGuardado && password === passwordGuardada) {
+                // Activar sesión
+                localStorage.setItem('sesionActiva', 'true');
+
+                mensajeExito.classList.remove('oculto');
+                alert('Inicio de sesión exitoso');
+                window.location.href = "../index.html"; // Redirección al index
+            } else {
+                alert('Credenciales inválidas');
+            }
         });
     </script>
 
