@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="form-container text-center">
+    <h2>Confirmar Cancelación</h2>
+    
+    <div class="alert alert-warning">
+        <p>¿Estás seguro de que quieres cancelar la reserva?</p>
+        <p><strong>Actividad:</strong> {{ reserva.actividad }}</p>
+        <p><strong>Fecha:</strong> {{ reserva.fecha }}</p>
+        <p>Esta acción no se puede deshacer.</p>
+    </div>
+
+    <form method="POST">
+        {% csrf_token %}
+        <div class="botones">
+            <button type="submit" class="btn-animado btn-danger">Sí, Cancelar Reserva</button>
+            <a href="{% url 'lista_reservas' %}" class="btn-animado">Volver a Mis Reservas</a>
+        </div>
+    </form>
+</div>
+
+<style>
+.btn-danger {
+    background-color: #dc3545;
+    border-color: #dc3545;
+}
+.btn-danger:hover {
+    background-color: #c82333;
+    border-color: #bd2130;
+}
+.botones {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    margin-top: 2rem;
+    flex-wrap: wrap;
+}
+.alert-warning {
+    background-color: #fff3cd;
+    border-color: #ffeaa7;
+    color: #856404;
+    padding: 1.5rem;
+    border-radius: 8px;
+}
+.form-container {
+    max-width: 500px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background-color: var(--white);
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(52, 152, 219, 0.1);
+}
+</style>
+{% endblock %}

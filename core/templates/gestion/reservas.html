@@ -1,0 +1,208 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Reservas - PlayVerse</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .mensaje-validacion {
+            font-size: 0.9rem;
+            margin-top: 0.3rem;
+            color: #ff6b6b;
+        }
+
+        .mensaje-validacion.ok {
+            color: #00ffe7;
+        }
+        
+        .alert {
+            padding: 15px;
+            margin-bottom: 20px;
+            border: 1px solid transparent;
+            border-radius: 4px;
+        }
+        
+        .alert-success {
+            color: #155724;
+            background-color: #d4edda;
+            border-color: #c3e6cb;
+        }
+        
+        .alert-error {
+            color: #721c24;
+            background-color: #f8d7da;
+            border-color: #f5c6cb;
+        }
+        
+        .botones-reserva {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+        
+        .btn-ver-reservas {
+            background-color: var(--secondary);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 5px;
+            font-weight: bold;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+        
+        .btn-ver-reservas:hover {
+            background-color: #27ae60;
+            transform: translateY(-2px);
+            color: white;
+            text-decoration: none;
+        }
+        
+        .header-buttons {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 2rem;
+        }
+    </style>
+</head>
+
+<body>
+
+  <header>
+    <div class="header-container">
+      <h1>PlayVerse</h1>
+      <p>Gestión de reservas</p>
+      <p> </p>
+
+      <!-- Barra de navegación común -->
+      <nav class="navbar">
+        <ul class="nav-links">
+          <li><a href="{% url 'inicio' %}">Inicio</a></li>
+          <li><a href="{% url 'actividades' %}">Actividades</a></li>
+          <li><a href="{% url 'reservas' %}">Reservas</a></li>
+          <li><a href="{% url 'ofertas' %}">Ofertas</a></li>
+          {% if user.is_authenticated %}
+            <li><a href="{% url 'logout' %}">Cerrar Sesión</a></li>
+          {% else %}
+            <li><a href="{% url 'login' %}">Iniciar Sesión</a></li>
+            <li><a href="{% url 'registro' %}">Registrarse</a></li>
+          {% endif %}
+        </ul>
+      </nav>
+    </div>
+  </header>
+    
+    <main>
+        <!-- Mostrar mensajes de Django -->
+        {% if messages %}
+            {% for message in messages %}
+                <div class="alert alert-{% if message.tags == 'error' %}error{% else %}{{ message.tags }}{% endif %}">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        {% endif %}
+
+        <!-- Botón para ver reservas (solo para usuarios autenticados) -->
+        {% if user.is_authenticated %}
+        <div class="header-buttons">
+            <a href="{% url 'lista_reservas' %}" class="btn-ver-reservas">
+                📋 Ver mis Reservas
+            </a>
+        </div>
+        {% endif %}
+
+        <form id="reservaForm" class="formulario" method="POST" action="{% url 'crear_reserva' %}">
+            {% csrf_token %}
+            
+            <!-- Mostrar errores del formulario -->
+            {% if form.errors %}
+                <div class="alert alert-error">
+                    <strong>Por favor corrige los siguientes errores:</strong>
+                    <ul>
+                        {% for field in form %}
+                            {% for error in field.errors %}
+                                <li>{{ field.label }}: {{ error }}</li>
+                            {% endfor %}
+                        {% endfor %}
+                        {% for error in form.non_field_errors %}
+                            <li>{{ error }}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            {% endif %}
+
+            <label for="id_actividad">Actividad:</label>
+            <select name="actividad" id="id_actividad" required>
+                <option value="">Seleccione una actividad</option>
+                <option value="Torneo Mario Kart">Torneo Mario Kart</option>
+                <option value="Sesión de comunidad">Sesión de comunidad</option>
+                <option value="Lanzamiento Elden Ring">Lanzamiento Elden Ring</option>
+            </select>
+
+            <label for="id_fecha">Fecha:</label>
+            <input type="date" name="fecha" id="id_fecha" required>
+
+            <div class="botones-reserva">
+                <button type="submit" class="btn-animado">Reservar</button>
+                <button type="reset" class="btn-animado">Limpiar</button>
+            </div>
+        </form>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 PlayVerse</p>
+    </footer>
+
+    <!-- Script de validación -->
+    <script>
+        const fechaInput = document.getElementById('id_fecha');
+        const actividadInput = document.getElementById('id_actividad');
+
+        // Establecer fecha mínima como hoy
+        const today = new Date().toISOString().split('T')[0];
+        fechaInput.min = today;
+
+        // Llenar actividad desde parámetro URL
+        window.addEventListener('DOMContentLoaded', () => {
+            const params = new URLSearchParams(window.location.search);
+            const actividad = params.get('actividad');
+            if (actividad) {
+                actividadInput.value = actividad;
+            }
+        });
+
+        // Validación del formulario
+        document.getElementById('reservaForm').addEventListener('submit', function (e) {
+            const actividad = actividadInput.value;
+            const fecha = fechaInput.value;
+
+            if (!actividad || !fecha) {
+                e.preventDefault();
+                alert('Por favor, complete todos los campos.');
+                return;
+            }
+
+            // Validar que la fecha no sea anterior a hoy
+            const selectedDate = new Date(fecha);
+            const today = new Date();
+            today.setHours(0, 0, 0, 0);
+            
+            if (selectedDate < today) {
+                e.preventDefault();
+                alert('La fecha no puede ser anterior al día de hoy.');
+                return;
+            }
+        });
+    </script>
+
+</body>
+
+</html>

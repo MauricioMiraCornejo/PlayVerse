@@ -1,0 +1,86 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="form-container">
+    <h2>{{ titulo }}</h2>
+    
+    {% if messages %}
+        {% for message in messages %}
+            <div class="alert alert-{{ message.tags }}">
+                {{ message }}
+            </div>
+        {% endfor %}
+    {% endif %}
+
+    <form method="POST" class="formulario">
+        {% csrf_token %}
+        
+        {% if form.errors %}
+            <div class="alert alert-error">
+                <strong>Por favor corrige los errores:</strong>
+                {{ form.errors }}
+            </div>
+        {% endif %}
+
+        <div class="form-group">
+            <label for="id_nombre">Nombre del Juego:</label>
+            {{ form.nombre }}
+        </div>
+
+        <div class="form-group">
+            <label for="id_descripcion">Descripción:</label>
+            {{ form.descripcion }}
+        </div>
+
+        <div class="form-group">
+            <label for="id_precio">Precio ($):</label>
+            {{ form.precio }}
+        </div>
+
+        <div class="form-group">
+            <label for="id_categoria">Categoría:</label>
+            {{ form.categoria }}
+        </div>
+
+        <div class="form-group">
+            <label for="id_imagen">URL de la Imagen:</label>
+            {{ form.imagen }}
+        </div>
+
+        <div class="form-group">
+            <label for="id_stock">Stock disponible:</label>
+            {{ form.stock }}
+        </div>
+
+        <div class="form-group">
+            <label class="checkbox-label">
+                {{ form.activo }} ¿Juego activo?
+            </label>
+        </div>
+
+        <div class="botones">
+            <button type="submit" class="btn-animado">Guardar</button>
+            <a href="{% url 'lista_juegos' %}" class="btn-animado btn-secondary">Cancelar</a>
+        </div>
+    </form>
+</div>
+
+<style>
+.checkbox-label {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.form-check-input {
+    width: 20px;
+    height: 20px;
+}
+.btn-secondary {
+    background-color: #6c757d;
+}
+.btn-secondary:hover {
+    background-color: #5a6268;
+}
+</style>
+{% endblock %}

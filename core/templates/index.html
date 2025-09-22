@@ -1,0 +1,70 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PlayVerse - Catálogo Gamer</title>
+  <link rel="stylesheet" href="{% static 'css/styles.css' %}" />
+  <link rel="stylesheet" href="{% static 'css/index.css' %}" />
+  
+</head>
+<body>
+  <header>
+    <div class="header-container">
+      <h1>PlayVerse</h1>
+      <nav class="navbar">
+        <ul class="nav-links">
+          <li><a href="{% url 'inicio' %}">Inicio</a></li>
+          <li><a href="{% url 'actividades' %}">Actividades</a></li>
+          <li><a href="{% url 'reservas' %}">Reservas</a></li>
+          <li><a href="{% url 'ofertas' %}">Ofertas</a></li>
+          <li><a href="{% url 'login' %}">Iniciar Sesión</a></li>
+          <li><a href="{% url 'registro' %}">Registrarse</a></li>
+          <!--<li><a href="#" onclick="cerrarSesion()">Cerrar sesión</a></li>-->
+          <li><a href="{% url 'logout' %}">Cerrar Sesión</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="categorias">
+      <div class="categoria">
+        <a href="{% url 'terror' %}">
+          <img src="{% static 'img/terror.jpg' %}" alt="Terror" />
+          <h2>Terror</h2>
+        </a>
+      </div>
+      <div class="categoria">
+        <a href="{% url 'accion' %}">
+          <img src="{% static 'img/accion.jpg' %}" alt="Acción" />
+          <h2>Acción</h2>
+        </a>
+      </div>
+      <div class="categoria">
+        <a href="{% url 'carreras' %}">
+          <img src="{% static 'img/carreras.jpg' %}" alt="Carreras" />
+          <h2>Carreras</h2>
+        </a>
+      </div>
+      <div class="categoria">
+        <a href="{% url 'mundoabierto' %}">
+          <img src="{% static 'img/mundoabierto.jpg' %}" alt="Mundo Abierto" />
+          <h2>Mundo Abierto</h2>
+        </a>
+      </div>
+      <div class="categoria">
+        <a href="{% url 'suspenso' %}">
+          <img src="{% static 'img/suspenso.jpg' %}" alt="Suspenso" />
+          <h2>Suspenso</h2>
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 PlayVerse</p>
+  </footer>
+</body>
+</html>

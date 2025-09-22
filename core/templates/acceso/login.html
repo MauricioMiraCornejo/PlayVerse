@@ -1,0 +1,165 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Login - PlayVerse</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .mensaje-validacion {
+            font-size: 0.9rem;
+            margin-top: 0.3rem;
+            color: #ff6b6b;
+        }
+
+        .mensaje-validacion.ok {
+            color: #00ffe7;
+        }
+
+        .oculto {
+            display: none;
+        }
+        
+        .enlace-recuperacion {
+            display: block;
+            text-align: center;
+            margin-top: 1rem;
+            color: #3498db;
+            text-decoration: none;
+        }
+        
+        .enlace-recuperacion:hover {
+            text-decoration: underline;
+            color: #2980b9;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <div class="header-container">
+            <h1>PlayVerse</h1>
+            <p> </p>
+
+            <!-- Barra de navegación común -->
+            <nav class="navbar">
+                <div class="logo">
+                    <!--<a href="index.html">PlayVerse</a> -->
+                </div>
+                <ul class="nav-links">
+                    <li><a href="{% url 'inicio' %}">Inicio</a></li>
+                    <li><a href="{% url 'registro' %}">Registrarse</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <div class="form-container">
+            <h2>Inicio de Sesión</h2>
+            <!-- Reemplaza el formulario actual con este -->
+            <form id="loginForm" class="formulario" method="POST">
+                {% csrf_token %}
+                
+                {% if form.errors %}
+                <div class="mensaje-validacion error">
+                    Correo electrónico o contraseña incorrectos.
+                </div>
+                {% endif %}
+
+                <label for="id_username">Correo electrónico:</label>
+                {{ form.username }}
+                <div id="emailMsg" class="mensaje-validacion"></div>
+
+                <label for="id_password">Contraseña:</label>
+                {{ form.password }}
+                <div id="passMsg" class="mensaje-validacion"></div>
+
+                <div style="height: 20px;"></div>
+
+                <div class="botones">
+                    <button type="submit" class="btn-animado">Ingresar</button>
+                    <button type="reset" class="btn-animado">Limpiar</button>
+                </div>
+                
+                <!-- Enlace para recuperación de contraseña -->
+                <a href="{% url 'password_reset_request' %}" class="enlace-recuperacion">
+                    ¿Olvidaste tu contraseña?
+                </a>
+            </form>
+
+            <!-- Mensaje de éxito opcional -->
+            <div id="mensajeExito" class="mensaje-validacion oculto ok">Inicio de sesión exitoso ✔</div>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 PlayVerse</p>
+    </footer>
+
+    <!-- Script de validación -->
+    <script>
+        const emailInput = document.getElementById('id_username');
+        const passwordInput = document.getElementById('id_password');
+
+        const emailMsg = document.getElementById('emailMsg');
+        const passMsg = document.getElementById('passMsg');
+        const mensajeExito = document.getElementById('mensajeExito');
+
+        const emailRegex = /^[^@]+@[^@]+\.[a-zA-Z]{2,}$/;
+        const passwordRegex = /^(?=.*[A-Z])(?=.*\d).{6,18}$/;
+
+        emailInput.addEventListener('input', () => {
+            if (emailRegex.test(emailInput.value)) {
+                emailMsg.textContent = "Correo válido ✔";
+                emailMsg.classList.add("ok");
+            } else {
+                emailMsg.textContent = "Correo inválido";
+                emailMsg.classList.remove("ok");
+            }
+        });
+
+        passwordInput.addEventListener('input', () => {
+            if (passwordRegex.test(passwordInput.value)) {
+                passMsg.textContent = "Contraseña segura ✔";
+                passMsg.classList.add("ok");
+            } else {
+                passMsg.textContent = "Debe tener entre 6 y 18 caracteres, una mayúscula y un número.";
+                passMsg.classList.remove("ok");
+            }
+        });
+
+        // Mantener la validación del formulario para UX, pero el envío real lo maneja Django
+        document.getElementById('loginForm').addEventListener('submit', function (e) {
+            const email = emailInput.value.trim();
+            const password = passwordInput.value;
+
+            mensajeExito.classList.add('oculto');
+
+            if (!email || !password) {
+                e.preventDefault();
+                alert('Por favor, complete todos los campos.');
+                return;
+            }
+
+            if (!emailRegex.test(email)) {
+                e.preventDefault();
+                alert('Ingrese un correo electrónico válido.');
+                return;
+            }
+
+            if (!passwordRegex.test(password)) {
+                e.preventDefault();
+                alert('La contraseña debe tener entre 6 y 18 caracteres, al menos una mayúscula y un número.');
+                return;
+            }
+        });
+    </script>
+
+</body>
+
+</html>

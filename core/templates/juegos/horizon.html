@@ -1,0 +1,89 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Horizon - Detalle</title>
+  <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+
+<body>
+
+  <header>
+    <div class="header-container">
+      <h1>PlayVerse</h1>
+      <p> </p>
+
+
+      <!-- Barra de navegación común -->
+      <nav class="navbar">
+        <div class="logo">
+          <!--<a href="index.html">PlayVerse</a> -->
+        </div>
+        <ul class="nav-links">
+          <li><a href="{% url 'mundoabierto' %}">← Categoría: Mundo Abierto</a></li>
+          <li><a href="{% url 'inicio' %}">Inicio</a></li>
+          <li><a href="{% url 'actividades' %}">Actividades</a></li>
+          <li><a href="{% url 'reservas' %}">Reservas</a></li>
+          <li><a href="{% url 'ofertas' %}">Ofertas</a></li>
+          <li><a href="{% url 'login' %}">Iniciar Sesion</a></li>
+          <li><a href="{% url 'registro' %}">Registrarse</a></li>
+        </ul>
+      </nav>
+
+    </div>
+  </header>
+
+  <main>
+    <div class="detalle-juego">
+      <div class="imagen-juego">
+        <img src="{% static 'img/horizon.jpg' %}" alt="Horizon">
+        <p class="login-msg">Inicie sesión para añadir el artículo a su carrito</p>
+        <h2>Horizon</h2>
+        <span class="precio">$49.990</span>
+        <!--<button id="btn-carrito" class="btn-animado">Añadir al Carrito</button>-->
+
+        <form method="post" action="{% url 'agregar_al_carrito' juego.id %}">
+          {% csrf_token %}
+          <button type="submit" class="btn-animado">Añadir al Carrito</button>
+        </form>
+
+      </div>
+
+      <div class="descripcion-juego">
+        <h3>Descripción</h3>
+        <p>
+          La serie de videojuegos "Horizon" es una saga de acción y aventura en mundo abierto desarrollada
+          por Guerrilla Games y publicada por PlayStation, donde la protagonista, Aloy, explora un mundo
+          postapocalíptico lleno de máquinas con forma de animales y tribus humanas con tecnología retrocedida.
+
+        </p>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 PlayVerse</p>
+  </footer>
+
+  <!-- Script para contar clics en el botón -->
+  <script>
+    let contadorCarrito = 0;
+    const botonCarrito = document.getElementById('btn-carrito');
+
+    botonCarrito.addEventListener('click', () => {
+      contadorCarrito++;
+      botonCarrito.textContent = `Añadir al Carrito (${contadorCarrito})`;
+      botonCarrito.classList.add('clickeado');
+
+      // Reinicia la animación si ya fue aplicada
+      setTimeout(() => {
+        botonCarrito.classList.remove('clickeado');
+      }, 300);
+    });
+  </script>
+
+</body>
+
+</html>

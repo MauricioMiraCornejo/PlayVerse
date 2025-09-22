@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>Gestión de Juegos</h2>
+<a href="{% url 'crear_juego' %}" class="btn btn-primary">Nuevo Juego</a>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Nombre</th>
+            <th>Precio</th>
+            <th>Categoría</th>
+            <th>Stock</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for juego in juegos %}
+        <tr>
+            <td>{{ juego.nombre }}</td>
+            <td>${{ juego.precio }}</td>
+            <td>{{ juego.get_categoria_display }}</td>
+            <td>{{ juego.stock }}</td>
+            <td>
+                <a href="{% url 'editar_juego' juego.id %}" class="btn btn-sm btn-warning">Editar</a>
+                <a href="{% url 'eliminar_juego' juego.id %}" class="btn btn-sm btn-danger">Eliminar</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}
